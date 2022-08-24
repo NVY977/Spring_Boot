@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<header th:insert="shops/header :: header"></header>
+<header th:insert="shop/shops/header :: header"></header>
 <div class="container mt-5 mb-5">
     <form action="/shop/new" method="POST">
         <input type="text" name="name" placeholder="Input name" class="form-control"><br>
@@ -16,6 +16,6 @@
         <button type="submit" class="btn btn-success">Create!</button>
     </form>
 </div>
-<footer th:insert="shops/footer :: footer"></footer>
+<footer th:insert="shop/shops/footer :: footer"></footer>
 </body>
 </html>

@@ -7,15 +7,18 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<header th:insert="shops/header :: header"></header>
+<header th:insert="shop/shops/header :: header"></header>
+
 <div class="container mt-5">
     <h1>Shop</h1>
     <div th:each="item : ${items}" class="alert alert-into mt-2">
         <p th:text="${item.getName() + ', ' + item.getCost()}">item</p>
+        <a th:href="'/shop/' + ${item.getId()}" class="btn btn-warning">Concrete</a>
     </div>
 </div>
 <br/>
 <hr/>
-<footer th:insert="shops/footer :: footer"></footer>
+
+<footer th:insert="shop/shops/footer :: footer"></footer>
 </body>
 </html>

@@ -1,4 +1,4 @@
-package ru.nvy.shop.models;
+package ru.nvy.shop.models.shop;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
