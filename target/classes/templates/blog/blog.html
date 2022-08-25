@@ -14,7 +14,7 @@
     <br>
     <br>
     <div th:each="message : ${messages}" class="alert alert-into mt-2">
-        <p th:text="${message.getTag() + ', ' + message.getText()}">message</p>
+        <p th:text="${message.getTag() + ', ' + message.getText() + message.getAuthorName()}">message</p>
         <a th:href="'/blog/' + ${message.getId()}" class="btn btn-warning">Concrete</a>
     </div>
 </div>

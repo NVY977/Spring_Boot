@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import ru.nvy.shop.models.Role;
-import ru.nvy.shop.models.User;
-import ru.nvy.shop.repos.UserRepo;
+import ru.nvy.shop.models.user.Role;
+import ru.nvy.shop.models.user.User;
+import ru.nvy.shop.repos.user.UserRepo;
 
 import java.util.Collections;
 import java.util.Map;

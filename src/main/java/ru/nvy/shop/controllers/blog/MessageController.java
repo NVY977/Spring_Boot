@@ -1,12 +1,14 @@
 package ru.nvy.shop.controllers.blog;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import ru.nvy.shop.models.user.User;
 import ru.nvy.shop.models.blog.Message;
 import ru.nvy.shop.repos.blog.MessageRepo;
 
@@ -35,9 +37,12 @@ public class MessageController {
     }
 
     @PostMapping("/blog/new")
-    public String create(@RequestParam String text, @RequestParam int tag, Model model) {
-        Message message = new Message(text, tag);
+    public String create(@AuthenticationPrincipal User user, @RequestParam String text,
+                         @RequestParam String tag, Model model) {
+        Message message = new Message(text, tag, user);
         messageRepo.save(message);
+        Iterable<Message> messages = messageRepo.findAll();
+        model.addAttribute("messages", messages);
         return "redirect:/blog";
     }
 
@@ -66,7 +71,7 @@ public class MessageController {
     }
 
     @PostMapping("/blog/{id}/edit")
-    public String update(@PathVariable(value = "id") long id, @RequestParam int tag,
+    public String update(@PathVariable(value = "id") long id, @RequestParam String tag,
                          @RequestParam String text, Model model) {
         Message message = messageRepo.findById(id).orElseThrow();
         message.setTag(tag);
