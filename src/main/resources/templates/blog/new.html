@@ -9,9 +9,10 @@
 <body>
 <header th:insert="general/header :: header"></header>
 <div class="container mt-5 mb-5">
-    <form action="/blog/new" method="POST">
+    <form action="/blog/new" method="POST" enctype="multipart/form-data">
         <input type="text" name="tag" placeholder="Input tag" class="form-control"><br>
         <textarea name="text" placeholder="Input text" class="form-control"></textarea><br>
+        <input type="file" name="file" > <br>
         <button type="submit" class="btn btn-success">Create!</button>
     </form>
 </div>

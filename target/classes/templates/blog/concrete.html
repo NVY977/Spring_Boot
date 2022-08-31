@@ -13,9 +13,13 @@
     <div th:each="message : ${messages}" class="alert alert-into mt-2">
         <h1 th:text="${message.getTag()}">tag</h1>
         <p th:text="${message.getText()}">text</p>
+        <img th:src="@{/img/{filename}(filename = ${message.getFilename()})}" width="300" height="300"
+             alt="<None Image>">
+        <br>
+        <hr/>
+        <br>
         <a th:href="'/blog/' + ${message.getId()} + '/edit'" class="btn btn-warning"> Edit </a>
-        <br>
-        <br>
+        <br> <br>
         <form th:action="'/blog/' + ${message.getId()} + '/delete'" method="POST">
             <button class="btn btn-warning" type="submit"> Remove</button>
         </form>

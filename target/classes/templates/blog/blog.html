@@ -8,21 +8,29 @@
 </head>
 <body>
 <header th:insert="general/header :: header"></header>
-    <div class="container mt-5">
+
+<div class="container mt-5">
     <h1>Blog</h1>
     <a th:href="'/blog/new'" class="btn btn-warning">Create message</a>
-    <br>
-    <br>
+    <br/>
+    <br/>
     <div th:each="message : ${messages}" class="alert alert-into mt-2">
-        <p th:text="${message.getTag() + ', ' + message.getText() + message.getAuthorName()}">message</p>
-        <a th:href="'/blog/' + ${message.getId()}" class="btn btn-warning">Concrete</a>
+        <hr/>
+        <p th:text="${message.getTag() + ', ' + message.getText() + '. Author: '+ message.getAuthorName()}">message</p>
+        <a th:href="'/blog/' + ${message.getId()}" class="btn btn-warning">Concrete message</a>
+        <br/>
+        <br/>
+        <img th:src="@{/img/{filename}(filename = ${message.getFilename()})}" width="200" height="200" alt="<None Image>">
     </div>
+    <a th:href="'/user/'" class="btn btn-warning">Friends</a> <br/> <br/>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
 </div>
+
 <br/>
 <hr/>
-<form th:action="@{/logout}" method="post">
-    <input type="submit" value="Sign Out"/>
-</form>
+
 <footer th:insert="general/footer :: footer"></footer>
 </body>
 </html>

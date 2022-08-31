@@ -14,9 +14,9 @@
     <div th:each="message : ${messages}" class="alert alert-into mt-2">
         <form method="POST">
             <input type="text" th:value="${message.getTag()}" name="tag" placeholder="Input tag"
-                   class="form-control"><br>
+                   class="form-control"><br/>
             <textarea name="text" placeholder="Input text"
-                      class="form-control" th:text="${message.getText()}"></textarea><br>
+                      class="form-control" th:text="${message.getText()}"></textarea><br/>
             <button type="submit" class="btn btn-success">Edit!</button>
         </form>
     </div>

@@ -3,10 +3,7 @@ package ru.nvy.shop.controllers.shop;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import ru.nvy.shop.models.shop.Item;
 import ru.nvy.shop.repos.shop.ItemRepository;
 
@@ -14,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 @Controller
+@RequestMapping("/shop")
 public class ItemController {
     @Autowired
     private final ItemRepository itemRepository;
@@ -22,19 +20,19 @@ public class ItemController {
         this.itemRepository = itemRepository;
     }
 
-    @GetMapping("/shop")
+    @GetMapping()
     public String shop(Model model) {
         Iterable<Item> items = itemRepository.findAll();
         model.addAttribute("items", items);
         return "shop/shop";
     }
 
-    @GetMapping("/shop/new")
+    @GetMapping("/new")
     public String newItem(Model model) {
         return "shop/new";
     }
 
-    @PostMapping("/shop/new")
+    @PostMapping("/new")
     public String create(@RequestParam String name, @RequestParam int cost,
                          @RequestParam String description, Model model) {
         Item item = new Item(name, cost, description);
@@ -42,7 +40,7 @@ public class ItemController {
         return "redirect:/shop";
     }
 
-    @GetMapping("/shop/{id}")
+    @GetMapping("/{id}")
     public String itemConcrete(@PathVariable(value = "id") long id, Model model) {
         if (!itemRepository.existsById(id)) {
             return "redirect:/shop";
@@ -54,7 +52,7 @@ public class ItemController {
         return "shop/concrete";
     }
 
-    @GetMapping("/shop/{id}/edit")
+    @GetMapping("/{id}/edit")
     public String itemEdit(@PathVariable(value = "id") long id, Model model) {
         if (!itemRepository.existsById(id)) {
             return "redirect:/shop";
@@ -66,7 +64,7 @@ public class ItemController {
         return "shop/edit";
     }
 
-    @PostMapping("/shop/{id}/edit")
+    @PostMapping("/{id}/edit")
     public String update(@PathVariable(value = "id") long id, @RequestParam String name, @RequestParam int cost,
                          @RequestParam String description, Model model) {
         Item item = itemRepository.findById(id).orElseThrow();
@@ -77,7 +75,7 @@ public class ItemController {
         return "redirect:/shop";
     }
 
-    @PostMapping("/shop/{id}/delete")
+    @PostMapping("/{id}/delete")
     public String delete(@PathVariable(value = "id") long id) {
         Item item = itemRepository.findById(id).orElseThrow();
         itemRepository.delete(item);
