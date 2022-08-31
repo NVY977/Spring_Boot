@@ -15,6 +15,7 @@ public class User implements UserDetails {
     private Long id;
     private String username;
     private String password;
+
     private boolean active;
 
     //ElementCollection - позволяет избавиться от создания таблицы для Enum

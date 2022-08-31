@@ -23,12 +23,14 @@ public class ItemController {
     @GetMapping()
     public String shop(Model model) {
         Iterable<Item> items = itemRepository.findAll();
+        model.addAttribute("title", "Items");
         model.addAttribute("items", items);
         return "shop/shop";
     }
 
     @GetMapping("/new")
     public String newItem(Model model) {
+        model.addAttribute("title", "New Item");
         return "shop/new";
     }
 
@@ -48,6 +50,7 @@ public class ItemController {
         Optional<Item> item = itemRepository.findById(id);
         ArrayList<Item> items = new ArrayList<>();
         item.ifPresent(items::add);
+        model.addAttribute("title", "Concrete Item");
         model.addAttribute("items", items);
         return "shop/concrete";
     }
@@ -60,6 +63,7 @@ public class ItemController {
         Optional<Item> item = itemRepository.findById(id);
         ArrayList<Item> items = new ArrayList<>();
         item.ifPresent(items::add);
+        model.addAttribute("title", "Edit item");
         model.addAttribute("items", items);
         return "shop/edit";
     }
