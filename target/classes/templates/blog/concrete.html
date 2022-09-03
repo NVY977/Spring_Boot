@@ -14,16 +14,13 @@
         <br>
         <hr/>
         <br>
-        <a th:href="'/blog/' + ${message.getId()} + '/edit'" class="btn btn-warning"> Edit </a>
+        <a th:href="'/blog/' + ${message.getId()} + '/edit'" class="btn btn-dark"> Edit </a>
         <br> <br>
         <form th:action="'/blog/' + ${message.getId()} + '/delete'" method="POST">
-            <button class="btn btn-warning" type="submit"> Remove</button>
+            <button class="btn btn-outline-dark" type="submit"> Remove</button>
         </form>
     </div>
 </div>
-<br/>
-<hr/>
-
 <footer th:insert="general/footer :: footer"></footer>
 </body>
 </html>

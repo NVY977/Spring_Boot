@@ -22,6 +22,7 @@
 <body>
 
 <header th:insert="general/header :: header"></header>
+
 <div class="container mt-5 ml-20">
     <div class="col align-self-center">
         <form th:action="@{/login}" method="post">
@@ -40,7 +41,7 @@
             <button class="btn btn-dark" type="submit">Sign In</button>
         </form>
         <br>
-        <a href="/registration" class="btn btn-light"> Add new user </a> <br> <br>
+        <a href="/registration" class="btn btn-outline-dark"> Add new user </a> <br> <br>
     </div>
     <br> <br>
 </div>

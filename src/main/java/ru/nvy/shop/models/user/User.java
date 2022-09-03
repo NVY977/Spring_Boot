@@ -15,8 +15,10 @@ public class User implements UserDetails {
     private Long id;
     private String username;
     private String password;
-
     private boolean active;
+
+    private String email;
+    private String activationCode;
 
     //ElementCollection - позволяет избавиться от создания таблицы для Enum
     // Fetch - параметр, который определяет как будут подгружаться данные
@@ -90,5 +92,21 @@ public class User implements UserDetails {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getActivationCode() {
+        return activationCode;
+    }
+
+    public void setActivationCode(String activationCode) {
+        this.activationCode = activationCode;
     }
 }

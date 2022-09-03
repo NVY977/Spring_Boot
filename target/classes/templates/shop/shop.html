@@ -7,14 +7,13 @@
 
 <div class="container mt-5">
     <h1>Shop</h1>
+    <hr/>
     <div th:each="item : ${items}" class="alert alert-into mt-2">
         <p th:text="${item.getName() + ', ' + item.getCost()}">item</p>
-        <a th:href="'/shop/' + ${item.getId()}" class="btn btn-warning">Concrete</a>
+        <a th:href="'/shop/' + ${item.getId()}" class="btn btn-outline-dark">Concrete</a>
+        <hr/>
     </div>
 </div>
-<br/>
-<hr/>
-
 <footer th:insert="general/footer :: footer"></footer>
 </body>
 </html>

@@ -7,10 +7,20 @@
 
 <div class="container mt-5">
     <h1>Blog</h1>
-    <div class="btn-group" role="group" aria-label="Basic outlined example">
-        <a th:href="'/blog/new'" class="btn btn-outline-dark">Create message</a>
-        <a th:href="'/user/'" class="btn btn-outline-dark">Friends</a>
+    <div class="row">
+        <div class="col-auto me-auto">
+            <div class="btn-group" role="group" aria-label="Basic outlined example">
+                <a th:href="'/blog/new'" class="btn btn-outline-dark">Create message</a>
+                <a th:href="'/user/'" class="btn btn-outline-dark">Friends</a>
+            </div>
+        </div>
+        <div class="col-auto">
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out" class="btn btn-outline-dark"/>
+            </form>
+        </div>
     </div>
+
     <br/>
     <br/>
     <div th:each="message : ${messages}" class="alert alert-into mt-2">
@@ -24,9 +34,7 @@
         <br/>
     </div>
     <br/> <br/>
-    <form th:action="@{/logout}" method="post">
-        <input type="submit" value="Sign Out"/>
-    </form>
+
 </div>
 <footer th:insert="general/footer :: footer"></footer>
 </body>
