@@ -7,22 +7,32 @@
 <div class="container mt-5 ml-20">
     <div class="col align-self-center">
         <form th:action="@{/registration}" method="post">
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">User Name :</label>
-                    <div class="col-sm-6">
-                        <input type="text" name="username" class="form-control" placeholder="User name"/>
-                    </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">User Name :</label>
+                <div class="col-sm-6">
+                    <input type="text" name="username" class="form-control" placeholder="User name"/>
                 </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Password:</label>
-                    <div class="col-sm-6">
-                        <input type="password" name="password" class="form-control" placeholder="Password"/>
-                    </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Password:</label>
+                <div class="col-sm-6">
+                    <input type="password" name="password" class="form-control" placeholder="Password"/>
                 </div>
-                <button class="btn btn-dark" type="submit">Add new user</button><br><br> <br>
-        </form> <br><br> <br>
-    </div><br><br>
-</div><br><br>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Email:</label>
+                <div class="col-sm-6">
+                    <input type="email" name="email" class="form-control" placeholder="Email"/>
+                </div>
+            </div>
+            <button class="btn btn-dark" type="submit">Add new user</button>
+            <br><br> <br>
+        </form>
+        <br><br> <br>
+    </div>
+    <br><br>
+</div>
+<br><br>
 <br><br>
 <footer th:insert="general/footer :: footer"></footer>
 </body>
