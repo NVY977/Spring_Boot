@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import ru.nvy.shop.models.user.User;
 import ru.nvy.shop.models.blog.Message;
 import ru.nvy.shop.repos.blog.MessageRepo;
+import ru.nvy.shop.service.UserService;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,13 +28,17 @@ public class MessageController {
         this.messageRepo = messageRepo;
     }
 
+    @Autowired
+    private UserService userService;
+
     //ищем upload.path в файле настроек и вставляем в нашу uploadPath
     @Value("${upload.path}")
     private String uploadPath;
 
     @GetMapping
-    public String blog(Model model) {
+    public String blog(@AuthenticationPrincipal User user, Model model) {
         Iterable<Message> messages = messageRepo.findAll();
+        model.addAttribute("users", user);
         model.addAttribute("title", "Blog");
         model.addAttribute("messages", messages);
         return "blog/blog";

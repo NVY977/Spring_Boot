@@ -7,20 +7,17 @@
 
 <div class="container mt-5">
     <div th:each="item : ${items}" class="alert alert-into mt-2">
-        <h1 th:text="${item.getName()}">name</h1>
+        <h5 th:text="${item.getName()}">name</h5>
         <p th:text="${item.getCost()}">item</p>
         <p th:text="${item.getDescription()}">desc</p>
-        <a th:href="'/shop/' + ${item.getId()} + '/edit'" class="btn btn-warning"> Edit </a>
+        <a th:href="'/shop/' + ${item.getId()} + '/edit'" class="btn btn-outline-dark"> Edit </a>
         <br>
         <br>
         <form th:action="'/shop/' + ${item.getId()} + '/delete'" method="POST">
-            <button class="btn btn-warning" type="submit"> Remove</button>
+            <button class="btn btn-dark" type="submit"> Remove</button>
         </form>
     </div>
 </div>
-<br/>
-<hr/>
-
 <footer th:insert="general/footer :: footer"></footer>
 </body>
 </html>

@@ -10,13 +10,10 @@
     <div th:each="user : ${users}" class="alert alert-into mt-2">
         <p th:text="${user.getUsername()}">username</p>
         <p th:text="${user.getRoles()}">role</p>
-        <a th:href="'/user/' + ${user.getId()}" class="btn btn-warning">Edit</a>
+        <a th:href="'/user/' + ${user.getId()}" class="btn btn-dark">Edit</a>
         <hr/>
     </div>
 </div>
-<br/>
-<hr/>
-
 <footer th:insert="general/footer :: footer"></footer>
 </body>
 </html>
