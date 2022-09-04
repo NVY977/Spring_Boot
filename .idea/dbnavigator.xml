@@ -29,7 +29,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="d53dc09b-be8a-4fef-8e36-bdb53945beaa">
-      <console name="FirstDB" type="STANDARD" schema="information_schema" session="Main"><![CDATA[select * from items]]></console>
+      <console name="FirstDB" type="STANDARD" schema="information_schema" session="Main"><![CDATA[select * from item]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -192,6 +192,7 @@
         <object-type name="FUNCTION" sorting-type="NAME" />
         <object-type name="PROCEDURE" sorting-type="NAME" />
         <object-type name="ARGUMENT" sorting-type="POSITION" />
+        <object-type name="TYPE ATTRIBUTE" sorting-type="POSITION" />
       </sorting>
       <default-editors>
         <object-type name="VIEW" editor-type="SELECTION" />
