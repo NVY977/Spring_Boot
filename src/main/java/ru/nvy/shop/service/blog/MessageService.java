@@ -28,8 +28,8 @@ public class MessageService {
         return messageRepo.findAll();
     }
 
-    public Iterable<Message> save(String text, String tag, User user, MultipartFile file) throws IOException {
-        Message message = new Message(text, tag, user);
+    public void save(Message message, User user, MultipartFile file) throws IOException {
+        message.setAuthor(user);
         if (file != null) {
             File uploadDir = new File(uploadPath);
             // если не существует директории
@@ -44,7 +44,6 @@ public class MessageService {
             message.setFilename(resultFilename);
         }
         messageRepo.save(message);
-        return messageRepo.findAll();
     }
 
     public ArrayList<Message> findById(long id) {
