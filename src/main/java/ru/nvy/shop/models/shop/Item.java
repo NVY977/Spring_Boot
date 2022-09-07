@@ -1,9 +1,15 @@
 package ru.nvy.shop.models.shop;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Item {
@@ -11,7 +17,16 @@ public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String name, description;
+
+    @NotBlank(message = "Please fill the message")
+    @Size(min=2, max=30, message = "Message too long. Number of characters from 2 to 30")
+    private String name;
+    @NotBlank(message = "Please fill the message")
+    @Length(max = 2048, message = "Message too long (more than 2kB)")
+    private String description;
+
+    @NotBlank(message = "Please fill the message")
+    @NotNull(message = "Cost must be greater than 0")
     private int cost;
 
     private String filename;

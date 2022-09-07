@@ -10,7 +10,7 @@
     <div th:each="user : ${users}" class="alert alert-into mt-2">
         <p th:text="${user.getUsername()}">username</p>
         <p th:text="${user.getRoles()}">role</p>
-        <a th:href="'/user/' + ${user.getId()}" class="btn btn-dark">Edit</a>
+        <a th:href="'/user/' + ${user.getId()}" class="btn btn-dark">Change Role</a>
         <hr/>
     </div>
 </div>

@@ -55,6 +55,7 @@ public class MessageController {
             return "blog/new";
         } else {
             messageService.save(message, user, file);
+            model.addAttribute("message", null);
         }
         Iterable<Message> messages = messageService.findAll();
         model.addAttribute("messages", messages);
