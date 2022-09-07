@@ -14,6 +14,8 @@ public class Item {
     private String name, description;
     private int cost;
 
+    private String filename;
+
     public Item() {
     }
 
@@ -55,6 +57,14 @@ public class Item {
 
     public void setCost(int cost) {
         this.cost = cost;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 
     //endregion
