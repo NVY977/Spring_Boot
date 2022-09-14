@@ -15,7 +15,6 @@
             </div>
         </div>
         <br>
-
         <textarea type="text" name="text" class="form-control"
                th:classappend="${message!=null} ? is-invalid : ''"
                th:value="${message !=null} ? ${message.getText()} : ''"> </textarea>
@@ -25,9 +24,7 @@
             </div>
         </div>
         <br>
-
         <input type="file" name="file"> <br> <br>
-
         <button type="submit" class="btn btn-success">Create!</button>
     </form>
 </div>
