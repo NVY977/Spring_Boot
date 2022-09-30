@@ -6,9 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -19,15 +19,15 @@ public class Item {
     private Long id;
 
     @NotBlank(message = "Please fill the message")
-    @Size(min=2, max=30, message = "Message too long. Number of characters from 2 to 30")
+    @Length(max = 50, message = "Message too long (more than 255)")
     private String name;
+
+    @NotNull(message = "Cost must be greater than 0")
+    @Positive
+    private int cost;
     @NotBlank(message = "Please fill the message")
     @Length(max = 2048, message = "Message too long (more than 2kB)")
     private String description;
-
-    @NotBlank(message = "Please fill the message")
-    @NotNull(message = "Cost must be greater than 0")
-    private int cost;
 
     private String filename;
 

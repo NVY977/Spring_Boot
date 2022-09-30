@@ -3,8 +3,17 @@ package ru.nvy.shop.controllers.shop;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import ru.nvy.shop.controllers.ControllerUtils;
+import ru.nvy.shop.models.blog.Message;
+import ru.nvy.shop.models.shop.Item;
 import ru.nvy.shop.service.shop.ItemService;
+
+import javax.validation.Valid;
+import java.io.IOException;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/shop")
@@ -27,11 +36,23 @@ public class ItemController {
 
     @PostMapping("/new")
     public String create(
-            @RequestParam String name,
-            @RequestParam int cost,
-            @RequestParam String description
-    ) {
-        itemService.save(name, cost, description);
+            @Valid Item item,
+            BindingResult bindingResult,
+            Model model,
+            @RequestParam("file") MultipartFile file
+    ) throws IOException {
+        if (bindingResult.hasErrors()) {
+            Map<String, String> errorsMap = ControllerUtils.getErrors(bindingResult);
+            model.mergeAttributes(errorsMap);
+            model.addAttribute("item", item);
+            return "shop/new";
+        } else {
+            itemService.save(item, file);
+            model.addAttribute("item", null);
+        }
+        Iterable<Item> items = itemService.findAll();
+        model.addAttribute("items", items);
+
         return "redirect:/shop";
     }
 
@@ -55,7 +76,7 @@ public class ItemController {
             @RequestParam String name,
             @RequestParam int cost,
             @RequestParam String description
-    ) {
+    ) throws IOException {
         itemService.updateItem(id, name, cost, description);
         return "redirect:/shop";
     }

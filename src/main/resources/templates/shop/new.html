@@ -5,10 +5,35 @@
 <body>
 <header th:insert="general/header :: header"></header>
 <div class="container mt-5 mb-5">
-    <form action="/shop/new" method="POST">
-        <input type="text" name="name" placeholder="Input name" class="form-control"><br>
-        <input type="text" name="cost" placeholder="Input cost" class="form-control"><br>
-        <textarea name="description" placeholder="Input description" class="form-control"></textarea><br>
+    <form action="/shop/new" method="POST" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="Input name" class="form-control"
+               th:classappend="${item!=null} ? is-invalid : ''"
+               th:value="${item !=null} ? ${item.getName()} : ''">
+        <div class="invalid-feedback">
+            <div th:if="${item !=null}" th:object="${item}" th:field="*{name}" id="name">
+                <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+            </div>
+        </div>
+        <br>
+        <input type="text" name="cost" placeholder="Input cost" class="form-control"
+               th:classappend="${item!=null} ? is-invalid : ''"
+               th:value="${item !=null} ? ${item.getCost()} : ''">
+        <div class="invalid-feedback">
+            <div th:if="${item !=null}" th:object="${item}" th:field="*{cost}" id="cost">
+                <div style="color:red" th:if="${#fields.hasErrors('cost')}" th:errors="*{cost}"></div>
+            </div>
+        </div>
+        <br>
+        <textarea name="description" placeholder="Input description" class="form-control"
+                  th:classappend="${item!=null} ? is-invalid : ''"
+                  th:value="${item !=null} ? ${item.getDescription()} : ''"> </textarea>
+        <div class="invalid-feedback">
+            <div th:if="${item !=null}" th:object="${item}" th:field="*{description}" id="description">
+                <div style="color:red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+            </div>
+        </div>
+        <br>
+        <input type="file" name="file"> <br> <br>
         <button type="submit" class="btn btn-success">Create!</button>
     </form>
 </div>

@@ -10,6 +10,8 @@
         <h5 th:text="${item.getName()}">name</h5>
         <p th:text="${item.getCost()}">item</p>
         <p th:text="${item.getDescription()}">desc</p>
+        <img th:src="@{/img/{filename}(filename = ${item.getFilename()})}" width="300" height="300"
+             alt="<None Image>"> <br> <br>
         <a th:href="'/shop/' + ${item.getId()} + '/edit'" class="btn btn-outline-dark"> Edit </a>
         <br>
         <br>

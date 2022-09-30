@@ -10,6 +10,8 @@
     <hr/>
     <div th:each="item : ${items}" class="alert alert-into mt-2">
         <p th:text="${item.getName() + ', ' + item.getCost()}">item</p>
+        <img th:src="@{/img/{filename}(filename = ${item.getFilename()})}" width="200" height="200"
+             alt="<None Image>"> <br> <br>
         <a th:href="'/shop/' + ${item.getId()}" class="btn btn-outline-dark">Concrete</a>
         <hr/>
     </div>
